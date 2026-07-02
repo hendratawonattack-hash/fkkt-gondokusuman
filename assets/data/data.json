@@ -1,0 +1,44 @@
+{
+  "organisasi": {
+    "nama": "Forum Komunikasi Karang Taruna (FKKT)",
+    "tingkat": "Kemantren Gondokusuman",
+    "tagline": "Bersatu, Bergerak, Berdampak",
+    "wilayah": [
+      "Kelurahan Demangan",
+      "Kelurahan Klitren",
+      "Kelurahan Kotabaru",
+      "Kelurahan Baciro",
+      "Kelurahan Terban"
+    ],
+    "kontak": {
+      "alamat": "Kantor Kemantren Gondokusuman, Yogyakarta",
+      "telepon": "+62 812-3456-7890",
+      "email": "fkkt.gondokusuman@gmail.com",
+      "instagram": "@fkkt_gondokusuman"
+    }
+  },
+  "berita": [
+    {
+      "id": 1,
+      "kategori": "Kegiatan",
+      "judul": "Bakti Sosial Lintas Kelurahan Sambut HUT RI ke-81",
+      "tanggal": "15 Agustus 2026",
+      "excerpt": "FKKT Gondokusuman menggelar bakti sosial serentak di 5 kelurahan..."
+    },
+    {
+      "id": 2,
+      "kategori": "Program",
+      "judul": "Workshop Kewirausahaan Digital untuk Pemuda Gondokusuman",
+      "tanggal": "2 Juli 2026",
+      "excerpt": "Sebanyak 50 pemuda dari 5 kelurahan mengikuti pelatihan kewirausahaan..."
+    }
+  ],
+  "program": [
+    {
+      "id": 1,
+      "kategori": "Sosial",
+      "nama": "Bakti Sosial Rutin",
+      "status": "Aktif"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak Kami | FKKT Gondokusuman</title>
+  <meta name="description" content="Hubungi FKKT Karang Taruna Kemantren Gondokusuman. Alamat, telepon, email, dan form pesan online.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">FKKT Gondokusuman</a>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="profil.html" class="nav-link">Profil</a></li>
+        <li><a href="program.html" class="nav-link">Program</a></li>
+        <li><a href="agenda.html" class="nav-link">Agenda</a></li>
+        <li><a href="berita.html" class="nav-link">Berita</a></li>
+        <li><a href="galeri.html" class="nav-link">Galeri</a></li>
+        <li><a href="struktur.html" class="nav-link">Struktur</a></li>
+        <li><a href="kontak.html" class="btn btn-primary active">Hubungi Kami</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container fade-up">
+      <h1 class="page-title">Hubungi Kami</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Beranda</a> <span>/</span> <span>Kontak</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="py-section bg-alt">
+    <div class="container">
+      <div class="contact-wrapper">
+        
+        <!-- Contact Info -->
+        <div class="contact-info-card fade-up stagger-1">
+          <h3>Informasi Kontak</h3>
+          <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--space-6);">
+            Punya pertanyaan atau ingin berkolaborasi? Jangan ragu untuk menghubungi kami melalui informasi di bawah ini.
+          </p>
+          
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-details">
+                <h4>Alamat Kantor</h4>
+                <p>Kantor Kemantren Gondokusuman<br>Jl. [Nama Jalan Lengkap]<br>Gondokusuman, Yogyakarta 55221</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="contact-details">
+                <h4>Telepon / WhatsApp</h4>
+                <p>+62 [xxx-xxxx-xxxx]</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <p>fkkt.gondokusuman@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon"><i class="far fa-clock"></i></div>
+              <div class="contact-details">
+                <h4>Jam Operasional</h4>
+                <p>Senin - Jumat: 08.00 - 16.00 WIB</p>
+              </div>
+            </div>
+          </div>
+          
+          <h4 style="color: var(--color-surface); margin-top: var(--space-8); margin-bottom: var(--space-4);">Media Sosial</h4>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="card fade-up stagger-2">
+          <div class="card-body">
+            <h3 style="margin-bottom: var(--space-2);">Kirim Pesan</h3>
+            <p class="text-secondary" style="margin-bottom: var(--space-6);">Kami akan merespons dalam 1-2 hari kerja.</p>
+            
+            <form id="contactForm" action="#" method="POST">
+              <div class="form-group">
+                <label for="name" class="form-label">Nama Lengkap *</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="Masukkan nama Anda">
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Email *</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="email@contoh.com">
+              </div>
+              
+              <div class="form-group">
+                <label for="phone" class="form-label">Nomor Telepon</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="08xx-xxxx-xxxx">
+              </div>
+              
+              <div class="form-group">
+                <label for="subject" class="form-label">Subjek *</label>
+                <input type="text" id="subject" name="subject" class="form-control" required placeholder="Perihal pesan">
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="form-label">Pesan *</label>
+                <textarea id="message" name="message" class="form-control" required placeholder="Tulis pesan Anda di sini..."></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Google Maps -->
+      <div class="fade-up map-container">
+        <!-- Placeholder iframe for Google Maps Kemantren Gondokusuman -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0729789390233!2d110.377651014777!3d-7.782084994391694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582bf2dc7f8f%3A0xc3c94294a867df3c!2sKantor%20Kemantren%20Gondokusuman!5e0!3m2!1sen!2sid!4v1650000000000!5m2!1sen!2sid" 
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Pesan berhasil dikirim! (Demo mode)');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

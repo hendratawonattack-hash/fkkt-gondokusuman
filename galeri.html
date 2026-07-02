@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Kegiatan | FKKT Gondokusuman</title>
+  <meta name="description" content="Galeri foto dan video dokumentasi kegiatan FKKT Karang Taruna Kemantren Gondokusuman.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">FKKT Gondokusuman</a>
+      <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="profil.html" class="nav-link">Profil</a></li>
+        <li><a href="program.html" class="nav-link">Program</a></li>
+        <li><a href="agenda.html" class="nav-link">Agenda</a></li>
+        <li><a href="berita.html" class="nav-link">Berita</a></li>
+        <li><a href="galeri.html" class="nav-link active">Galeri</a></li>
+        <li><a href="struktur.html" class="nav-link">Struktur</a></li>
+        <li><a href="kontak.html" class="btn btn-primary">Hubungi Kami</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container fade-up">
+      <h1 class="page-title">Galeri Kegiatan</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Beranda</a> <span>/</span> <span>Galeri</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Galeri -->
+  <section class="py-section bg-alt">
+    <div class="container">
+      
+      <!-- Filters -->
+      <div class="gallery-filter fade-up">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="sosial">Kegiatan Sosial</button>
+        <button class="filter-btn" data-filter="pendidikan">Pendidikan</button>
+        <button class="filter-btn" data-filter="seni">Seni & Budaya</button>
+        <button class="filter-btn" data-filter="olahraga">Olahraga</button>
+        <button class="filter-btn" data-filter="resmi">Acara Resmi</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        
+        <!-- Item 1 -->
+        <div class="gallery-item fade-up stagger-1" data-category="sosial">
+          <div class="gallery-img" style="background: #ccc;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="gallery-item fade-up stagger-2" data-category="pendidikan">
+          <div class="gallery-img" style="background: #ddd;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="gallery-item fade-up stagger-3" data-category="resmi">
+          <div class="gallery-img" style="background: #eee;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="gallery-item fade-up stagger-1" data-category="olahraga">
+          <div class="gallery-img" style="background: #bbb;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="gallery-item fade-up stagger-2" data-category="seni">
+          <div class="gallery-img" style="background: #aaa;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="gallery-item fade-up stagger-3" data-category="sosial">
+          <div class="gallery-img" style="background: #999;"></div>
+          <div class="gallery-overlay">
+            <i class="fas fa-search-plus gallery-icon"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img src="" alt="Fullscreen view" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 FKKT Kemantren Gondokusuman. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/gallery.js"></script>
+</body>
+</html>
