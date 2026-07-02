@@ -1,0 +1,317 @@
+# SYSTEM DESIGN
+# Website Statis FKKT Karang Taruna Kemantren Gondokusuman
+# Versi: 1.0.0 | Tanggal: 2026-07-02
+
+## ─────────────────────────────────────────────
+## 1. ARSITEKTUR SISTEM
+## ─────────────────────────────────────────────
+
+TYPE          : Static Website (HTML + CSS + Vanilla JS)
+DEPLOYMENT    : GitHub Pages / Netlify / VPS (shared hosting)
+BUILD TOOL    : None (pure static, no bundler)
+DEPENDENCIES  : Google Fonts, Font Awesome 6 (CDN)
+
+STRUKTUR FOLDER:
+  fkkt-gondokusuman/
+  ├── index.html              → Beranda
+  ├── profil.html             → Profil & Tentang Kami
+  ├── program.html            → Program & Kegiatan
+  ├── berita.html             → Daftar Berita
+  ├── berita-detail.html      → Detail Berita (template)
+  ├── galeri.html             → Galeri Foto
+  ├── struktur.html           → Struktur Organisasi
+  ├── kontak.html             → Kontak
+  ├── assets/
+  │   ├── css/
+  │   │   ├── main.css        → Global styles, design tokens
+  │   │   ├── components.css  → Navbar, footer, cards, buttons
+  │   │   └── pages.css       → Page-specific styles
+  │   ├── js/
+  │   │   ├── main.js         → Init, navbar, scroll behavior
+  │   │   ├── gallery.js      → Lightbox, filter galeri
+  │   │   └── animations.js   → AOS / scroll animations
+  │   ├── images/
+  │   │   ├── logo/           → Logo FKKT & Karang Taruna
+  │   │   ├── hero/           → Hero section images
+  │   │   ├── kegiatan/       → Foto kegiatan
+  │   │   ├── struktur/       → Foto pengurus
+  │   │   └── galeri/         → Foto galeri
+  │   └── fonts/              → (fallback jika offline)
+  └── system-design           → Dokumen desain sistem
+      system-document         → Dokumen konten & spesifikasi
+
+
+## ─────────────────────────────────────────────
+## 2. DESIGN SYSTEM / TOKENS
+## ─────────────────────────────────────────────
+
+### 2.1 COLOR PALETTE
+--color-primary       : #1B5E20   (Hijau tua — identitas Karang Taruna)
+--color-primary-light : #2E7D32
+--color-primary-dark  : #0D3B12
+--color-accent        : #FFC107   (Kuning emas — aksen nasional)
+--color-accent-dark   : #FF8F00
+--color-bg            : #F9FAFB   (Background utama)
+--color-bg-alt        : #EDF2EE   (Background alternatif/section)
+--color-surface       : #FFFFFF   (Card surface)
+--color-text-primary  : #1A1A1A   (Teks utama)
+--color-text-secondary: #4A5568   (Teks sekunder)
+--color-text-muted    : #718096   (Teks muted/placeholder)
+--color-border        : #E2E8F0   (Border/divider)
+
+GRADIENT HERO:
+  linear-gradient(135deg, #0D3B12 0%, #1B5E20 50%, #2E7D32 100%)
+
+DARK OVERLAY (untuk foto):
+  rgba(13, 59, 18, 0.75)
+
+### 2.2 TYPOGRAPHY
+Font Family Primary  : 'Plus Jakarta Sans' (Google Fonts)
+Font Family Secondary: 'Lora' (Google Fonts — untuk heading editorial)
+Font Mono           : 'JetBrains Mono' (opsional untuk kode/label)
+
+Font Scale (rem):
+  --text-xs   : 0.75rem   (12px)
+  --text-sm   : 0.875rem  (14px)
+  --text-base : 1rem      (16px)
+  --text-md   : 1.125rem  (18px)
+  --text-lg   : 1.25rem   (20px)
+  --text-xl   : 1.5rem    (24px)
+  --text-2xl  : 1.875rem  (30px)
+  --text-3xl  : 2.25rem   (36px)
+  --text-4xl  : 3rem      (48px)
+  --text-hero : 3.75rem   (60px)
+
+Font Weight:
+  --weight-regular : 400
+  --weight-medium  : 500
+  --weight-semibold: 600
+  --weight-bold    : 700
+  --weight-extrabold: 800
+
+Line Height:
+  --leading-tight  : 1.2
+  --leading-normal : 1.6
+  --leading-relaxed: 1.8
+
+### 2.3 SPACING SYSTEM (base 4px)
+  --space-1 : 4px    --space-2 : 8px    --space-3 : 12px
+  --space-4 : 16px   --space-5 : 20px   --space-6 : 24px
+  --space-8 : 32px   --space-10: 40px   --space-12: 48px
+  --space-16: 64px   --space-20: 80px   --space-24: 96px
+
+### 2.4 BREAKPOINTS
+  --bp-sm  : 480px
+  --bp-md  : 768px
+  --bp-lg  : 1024px
+  --bp-xl  : 1280px
+  --bp-2xl : 1536px
+
+### 2.5 SHADOWS & BORDER RADIUS
+  --shadow-sm  : 0 1px 3px rgba(0,0,0,0.08)
+  --shadow-md  : 0 4px 16px rgba(0,0,0,0.10)
+  --shadow-lg  : 0 8px 32px rgba(0,0,0,0.14)
+  --shadow-xl  : 0 16px 48px rgba(0,0,0,0.18)
+  --shadow-card: 0 4px 20px rgba(27,94,32,0.10)
+
+  --radius-sm  : 6px    --radius-md : 12px
+  --radius-lg  : 20px   --radius-xl : 32px
+  --radius-full: 9999px
+
+### 2.6 TRANSITIONS & ANIMATIONS
+  --transition-fast  : 0.15s ease
+  --transition-normal: 0.3s ease
+  --transition-slow  : 0.5s ease
+  --transition-bounce: 0.4s cubic-bezier(0.34,1.56,0.64,1)
+
+Animation classes (JS-driven via IntersectionObserver):
+  .fade-in-up    → opacity 0→1, translateY 30px→0
+  .fade-in-left  → opacity 0→1, translateX -30px→0
+  .fade-in-right → opacity 0→1, translateX 30px→0
+  .scale-in      → opacity 0→1, scale 0.9→1
+  .stagger-item  → animasi berantai dengan delay bertahap
+
+
+## ─────────────────────────────────────────────
+## 3. KOMPONEN UI
+## ─────────────────────────────────────────────
+
+### 3.1 NAVBAR
+- Sticky top, transparent saat di hero → solid saat scroll
+- Logo kiri + nama organisasi
+- Menu navigasi kanan (desktop)
+- Hamburger menu (mobile) dengan slide-down dropdown
+- Active state per halaman
+- CTA button "Hubungi Kami"
+
+### 3.2 HERO SECTION
+- Full-width, min-height 90vh
+- Background: gradient hijau tua + overlay foto kegiatan
+- Tagline utama (h1) + deskripsi singkat
+- Dua CTA button: "Tentang Kami" + "Program Kami"
+- Scroll indicator (animated arrow)
+- Floating stats cards: Kelurahan, Anggota, Program, Kegiatan
+
+### 3.3 CARD COMPONENTS
+- Program Card   : Ikon + judul + deskripsi singkat + link
+- Berita Card    : Thumbnail + tanggal + kategori + judul + excerpt
+- Galeri Card    : Foto + overlay hover + lightbox trigger
+- Pengurus Card  : Foto + nama + jabatan + sosial media ikon
+
+### 3.4 SECTION LAYOUTS
+- Section wrapper: max-width 1280px, padding horizontal responsive
+- Alternating bg: --color-bg / --color-bg-alt
+- Section header: label kecil + h2 + garis dekoratif
+
+### 3.5 FOOTER
+- Background: --color-primary-dark
+- 4 kolom: Logo & deskripsi | Navigasi | Kontak | Sosial Media
+- Garis pembatas + copyright
+- Responsive: stack 2 kolom di tablet, 1 kolom di mobile
+
+### 3.6 BUTTON VARIANTS
+  .btn-primary   → bg primary, text white
+  .btn-outline   → border primary, text primary, hover fill
+  .btn-accent    → bg accent, text dark
+  .btn-ghost     → no bg, text muted, hover bg-alt
+  Semua: padding, border-radius-full, transition, hover shadow
+
+### 3.7 FORM (Halaman Kontak)
+- Input fields: nama, email, telepon, pesan
+- Styling: border-bottom only (floating label style)
+- Submit: btn-primary full width
+- Validasi: HTML5 + JS feedback
+
+
+## ─────────────────────────────────────────────
+## 4. HALAMAN & FITUR
+## ─────────────────────────────────────────────
+
+### PAGE: index.html (Beranda)
+Sections:
+  1. Navbar
+  2. Hero — tagline + stats
+  3. Tentang Singkat — preview profil
+  4. Program Unggulan — 3 kartu program
+  5. Berita Terbaru — 3 kartu berita
+  6. Galeri Preview — grid 6 foto + link ke galeri
+  7. CTA Banner — ajakan bergabung/kontak
+  8. Footer
+
+### PAGE: profil.html (Profil)
+Sections:
+  1. Navbar + Page Hero (mini hero dengan judul halaman)
+  2. Sejarah & Latar Belakang
+  3. Visi & Misi (cards)
+  4. Nilai & Identitas Organisasi
+  5. Footer
+
+### PAGE: program.html (Program & Kegiatan)
+Sections:
+  1. Navbar + Page Hero
+  2. Filter tab: Semua | Sosial | Budaya | Pendidikan | Olahraga
+  3. Grid program cards
+  4. Timeline kegiatan/jadwal
+  5. Footer
+
+### PAGE: berita.html (Berita)
+Sections:
+  1. Navbar + Page Hero
+  2. Featured berita (besar)
+  3. Grid berita cards
+  4. Pagination (JS)
+  5. Footer
+
+### PAGE: berita-detail.html (Detail Berita)
+Sections:
+  1. Navbar
+  2. Breadcrumb
+  3. Artikel (judul, meta, konten, foto)
+  4. Bagikan ke sosmed (share buttons)
+  5. Berita Terkait
+  6. Footer
+
+### PAGE: galeri.html (Galeri)
+Sections:
+  1. Navbar + Page Hero
+  2. Filter kategori (JS)
+  3. Masonry/grid foto
+  4. Lightbox modal (fullscreen foto)
+  5. Footer
+
+### PAGE: struktur.html (Struktur Organisasi)
+Sections:
+  1. Navbar + Page Hero
+  2. Bagan hierarki organisasi (CSS chart)
+  3. Grid kartu pengurus (foto + jabatan)
+  4. Periode kepengurusan
+  5. Footer
+
+### PAGE: kontak.html (Kontak)
+Sections:
+  1. Navbar + Page Hero
+  2. Info kontak (alamat, telp, email, sosmed)
+  3. Form pesan
+  4. Peta lokasi (Google Maps embed)
+  5. Footer
+
+
+## ─────────────────────────────────────────────
+## 5. PERFORMA & SEO
+## ─────────────────────────────────────────────
+
+SEO:
+  - Meta title unik per halaman
+  - Meta description per halaman
+  - Open Graph tags (og:title, og:description, og:image)
+  - Semantic HTML5 (header, main, section, article, footer)
+  - Alt text pada semua gambar
+  - Canonical URL
+  - sitemap.xml (manual)
+  - robots.txt
+
+PERFORMA:
+  - Lazy loading gambar (loading="lazy")
+  - Kompresi gambar (.webp format)
+  - CSS minifikasi manual (satu file per deploy)
+  - Font preload
+  - No heavy framework, murni HTML/CSS/JS
+
+AKSESIBILITAS:
+  - ARIA labels pada navigasi & form
+  - Focus styles visible
+  - Warna kontras minimum WCAG AA
+  - Skip to content link
+
+
+## ─────────────────────────────────────────────
+## 6. KONVENSI KODE
+## ─────────────────────────────────────────────
+
+HTML:
+  - Indentasi: 2 spasi
+  - Atribut: lowercase, urutan: id → class → data-* → aria-*
+  - Komentar section: <!-- ===== SECTION NAME ===== -->
+
+CSS:
+  - Metodologi: BEM ringan (block__element--modifier)
+  - CSS Custom Properties di :root
+  - Mobile-first media queries
+  - Komentar: /* === Component Name === */
+
+JavaScript:
+  - ES6+ (arrow functions, const/let, template literals)
+  - Satu file per concern (main, gallery, animations)
+  - DOMContentLoaded wrapper
+  - Komentar JSDoc untuk fungsi utama
+
+
+## ─────────────────────────────────────────────
+## 7. BRANCHING & VERSI
+## ─────────────────────────────────────────────
+
+main      → production (GitHub Pages)
+develop   → pengembangan aktif
+feature/* → fitur baru (merge ke develop)
+
+Versi: Semantic versioning (v1.0.0 → v1.x → v2.0.0)

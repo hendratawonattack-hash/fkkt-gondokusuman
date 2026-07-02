@@ -1,0 +1,526 @@
+# SYSTEM DOCUMENT
+# Portal Karang Taruna Kemantren Gondokusuman
+# Versi: 1.1.0 | Tanggal: 2026-07-02
+# Rujukan: system-design (versi sama)
+
+---
+
+## 1. IDENTITAS ORGANISASI
+
+NAMA RESMI   : Forum Komunikasi Karang Taruna (FKKT)
+TINGKAT      : Kemantren Gondokusuman
+KOTA         : Yogyakarta, Daerah Istimewa Yogyakarta
+TAGLINE      : "Bersatu, Bergerak, Berdampak"
+WARNA RESMI  : Hijau & Kuning Emas (sesuai identitas Karang Taruna)
+
+WILAYAH CAKUPAN (Kelurahan di Gondokusuman):
+  1. Kelurahan Demangan
+  2. Kelurahan Klitren
+  3. Kelurahan Kotabaru
+  4. Kelurahan Baciro
+  5. Kelurahan Terban
+
+KONTAK (placeholder — ganti dengan data asli):
+  Alamat   : Kantor Kemantren Gondokusuman, Jl. [nama jalan], Yogyakarta
+  Telepon  : +62 [xxx-xxxx-xxxx]
+  Email    : fkkt.gondokusuman@gmail.com
+  Instagram: @fkkt_gondokusuman
+  Facebook : FKKT Gondokusuman
+  WhatsApp : +62 [xxx-xxxx-xxxx]
+  YouTube  : [nama channel, jika ada]
+
+---
+
+## 2. DESKRIPSI SISTEM
+
+Portal Karang Taruna Kemantren Gondokusuman merupakan website resmi yang
+menyediakan informasi organisasi, publikasi kegiatan, dokumentasi, program
+kerja, serta media komunikasi dengan masyarakat.
+
+Website bertujuan meningkatkan transparansi organisasi sekaligus
+memperluas publikasi kegiatan kepemudaan.
+
+---
+
+## 3. PENGGUNA SISTEM
+
+### Pengunjung (Publik)
+Hak akses:
+  * Melihat seluruh informasi publik
+  * Membaca berita & artikel
+  * Melihat agenda kegiatan
+  * Melihat galeri foto & video
+  * Melihat program kerja
+  * Menghubungi pengurus (form kontak)
+
+### Administrator
+Hak akses:
+  * Login & logout
+  * Mengelola profil organisasi
+  * Mengelola berita
+  * Mengelola agenda
+  * Mengelola galeri (foto & video)
+  * Mengelola program kerja
+  * Mengelola prestasi
+  * Mengelola struktur organisasi
+  * Mengelola & membalas pesan pengunjung
+
+CATATAN: Untuk versi v1.0 (web statis), fitur admin akan diimplementasikan
+sebagai panel HTML statis yang diproteksi password sederhana via JS.
+Untuk versi berikutnya dapat diintegrasikan backend (PHP/Node.js).
+
+---
+
+## 4. MODUL & HALAMAN PUBLIK
+
+### ─── 4.1 BERANDA (index.html) ───
+
+Menampilkan:
+  * Banner utama (Hero) + tagline
+  * Sambutan Ketua (opsional)
+  * Profil singkat organisasi
+  * Berita terbaru (3 kartu)
+  * Agenda terdekat
+  * Program unggulan (3 kartu)
+  * Statistik kegiatan (kelurahan, anggota, program, kegiatan)
+  * Galeri pilihan (6 foto)
+  * CTA: "Bergabunglah Bersama Kami"
+
+Konten Hero:
+  H1     : "Forum Komunikasi Karang Taruna Kemantren Gondokusuman"
+  Tagline: "Bersatu, Bergerak, Berdampak untuk Pemuda Yogyakarta"
+  Deskripsi:
+    "Wadah koordinasi dan komunikasi Karang Taruna se-Kemantren
+     Gondokusuman dalam mewujudkan pemuda yang mandiri, kreatif,
+     dan berdaya guna bagi masyarakat."
+  CTA1: "Tentang Kami" → profil.html
+  CTA2: "Program Kami" → program.html
+
+Stats:
+  - Kelurahan     : 5
+  - Total Anggota : [placeholder]
+  - Program Aktif : [placeholder]
+  - Kegiatan/Tahun: [placeholder]
+
+Program Unggulan (3 kartu):
+  1. Ikon: fa-hands-helping | Judul: "Pengabdian Masyarakat"
+     Deskripsi: "Bakti sosial, donor darah, dan pemberdayaan warga
+                 melalui program gotong royong lintas kelurahan."
+  2. Ikon: fa-graduation-cap | Judul: "Pengembangan SDM"
+     Deskripsi: "Pelatihan keterampilan, workshop kewirausahaan,
+                 dan bimbingan belajar bagi pemuda dan anak-anak."
+  3. Ikon: fa-palette | Judul: "Seni Budaya & Olahraga"
+     Deskripsi: "Festival seni, pertandingan olahraga, dan
+                 pelestarian budaya lokal Yogyakarta."
+
+Berita Terbaru (3 kartu placeholder):
+  1. Kategori: Kegiatan | "Bakti Sosial Lintas Kelurahan Sambut HUT RI ke-81"
+  2. Kategori: Program  | "Workshop Kewirausahaan Digital untuk Pemuda Gondokusuman"
+  3. Kategori: Prestasi | "Karang Taruna Gondokusuman Raih Penghargaan Tingkat Kota"
+
+
+### ─── 4.2 PROFIL (profil.html) ───
+
+Berisi:
+  * Sejarah organisasi & latar belakang pendirian
+  * Visi
+  * Misi (5 poin)
+  * Nilai & identitas organisasi
+  * Dasar hukum
+  * Wilayah kerja (5 kelurahan)
+  * Kepengurusan (link ke struktur.html)
+
+VISI:
+  "Terwujudnya pemuda Kemantren Gondokusuman yang mandiri,
+   berkarakter, dan berdaya guna bagi bangsa dan masyarakat."
+
+MISI:
+  1. Membangun komunikasi dan koordinasi yang efektif antar
+     Karang Taruna kelurahan se-Kemantren Gondokusuman
+  2. Meningkatkan kapasitas dan kompetensi pemuda melalui
+     pelatihan dan pendidikan nonformal
+  3. Mendorong partisipasi aktif pemuda dalam pembangunan
+     masyarakat dan pelestarian budaya
+  4. Mengembangkan jiwa wirausaha dan kemandirian ekonomi
+     para anggota Karang Taruna
+  5. Menjalin kerjasama dengan pemerintah, dunia usaha,
+     dan organisasi kemasyarakatan lainnya
+
+NILAI:
+  Kebersamaan | Integritas | Kreativitas | Kepedulian | Kemandirian
+
+
+### ─── 4.3 BERITA (berita.html + berita-detail.html) ───
+
+Administrator dapat:
+  * Menambah berita
+  * Mengubah berita
+  * Menghapus berita
+  * Mengelompokkan berita berdasarkan kategori
+
+Pengunjung dapat:
+  * Membaca seluruh berita yang dipublikasikan
+  * Memfilter berdasarkan kategori
+  * Navigasi halaman (pagination)
+
+Kategori: Semua | Kegiatan | Program | Prestasi | Pengumuman
+
+Berita Placeholder (6 item):
+  1. Kategori: Kegiatan    | "Bakti Sosial Lintas Kelurahan Sambut HUT RI ke-81"
+  2. Kategori: Program     | "Workshop Kewirausahaan Digital untuk Pemuda Gondokusuman"
+  3. Kategori: Prestasi    | "Karang Taruna Gondokusuman Raih Penghargaan Tingkat Kota"
+  4. Kategori: Pengumuman  | "Jadwal Rapat Koordinasi Triwulan III"
+  5. Kategori: Kegiatan    | "Kemah Pemuda Gondokusuman 2026"
+  6. Kategori: Program     | "Launching Program Bimbel Gratis Semester Baru"
+
+
+### ─── 4.4 AGENDA (agenda.html) ───
+
+Setiap agenda memuat:
+  * Nama kegiatan
+  * Tanggal & waktu
+  * Lokasi
+  * Penanggung jawab
+  * Deskripsi
+  * Poster kegiatan (opsional)
+
+Timeline Kegiatan 2026 (placeholder):
+  Jan: Rapat Koordinasi Awal Tahun
+  Feb: Pelatihan Kewirausahaan Digital
+  Mar: Donor Darah Massal
+  Apr: Turnamen Olahraga Antar Kelurahan
+  Mei: Workshop Desain Grafis
+  Jun: Bakti Sosial Hari Lingkungan Hidup
+  Jul: Kemah Pemuda Gondokusuman
+  Agu: Bakti Sosial HUT RI ke-81
+  Sep: Festival Budaya Gondokusuman
+  Okt: Seminar Pemuda Inspiratif
+  Nov: Pelatihan Kebencanaan
+  Des: Evaluasi & Musyawarah Tahunan
+
+
+### ─── 4.5 PROGRAM KERJA (program.html) ───
+
+Setiap program memuat:
+  * Nama program
+  * Bidang/kategori
+  * Tujuan
+  * Deskripsi lengkap
+  * Jadwal pelaksanaan
+  * Status pelaksanaan (Aktif / Tahunan / Selesai)
+  * Dokumentasi
+
+Kategori Filter:
+  Semua | Sosial & Kemasyarakatan | Pendidikan & Pelatihan |
+  Seni & Budaya | Olahraga & Kesehatan | Lingkungan
+
+Program Placeholder (6 item):
+  1. "Bakti Sosial Rutin"         — Sosial & Kemasyarakatan — Aktif
+  2. "Bimbingan Belajar Gratis"   — Pendidikan & Pelatihan  — Aktif
+  3. "Workshop Kewirausahaan"     — Pendidikan & Pelatihan  — Aktif
+  4. "Festival Budaya Gondokusuman" — Seni & Budaya         — Tahunan
+  5. "Turnamen Olahraga Antar Kelurahan" — Olahraga & Kesehatan — Tahunan
+  6. "Gerakan Penghijauan"        — Lingkungan              — Aktif
+
+
+### ─── 4.6 GALERI (galeri.html) ───
+
+Terdiri dari:
+
+Foto:
+  * Kegiatan organisasi
+  * Pelatihan
+  * Bakti sosial
+  * Festival
+  * Dokumentasi rapat
+
+Video:
+  * Profil organisasi
+  * Dokumentasi kegiatan
+  * Video promosi (embed YouTube)
+
+Filter Kategori:
+  Semua | Kegiatan Sosial | Pendidikan | Seni & Budaya | Olahraga | Acara Resmi
+
+Fitur: Lightbox modal fullscreen + navigasi panah + keyboard ESC
+
+
+### ─── 4.7 PRESTASI (opsional di beranda atau halaman terpisah) ───
+
+Menampilkan:
+  * Nama prestasi
+  * Tahun
+  * Tingkat prestasi (kelurahan / kecamatan / kota / provinsi / nasional)
+  * Deskripsi
+  * Dokumentasi/foto
+
+
+### ─── 4.8 STRUKTUR ORGANISASI (struktur.html) ───
+
+Berisi:
+  * Periode kepengurusan: [Tahun] - [Tahun]
+  * Bagan hierarki organisasi (CSS chart)
+  * Grid kartu pengurus (foto + jabatan)
+  * Perwakilan kelurahan
+
+Hierarki:
+  Ketua
+  ├── Wakil Ketua
+  ├── Sekretaris
+  ├── Bendahara
+  └── Bidang-bidang:
+      ├── Bidang Pengabdian Masyarakat
+      ├── Bidang Pendidikan & Pelatihan
+      ├── Bidang Seni, Budaya & Olahraga
+      ├── Bidang Komunikasi & Informasi
+      └── Bidang Kewirausahaan
+
+Pengurus (placeholder):
+  Ketua           : [Nama Ketua]
+  Wakil Ketua     : [Nama Wakil]
+  Sekretaris      : [Nama Sekretaris]
+  Bendahara       : [Nama Bendahara]
+  Kabid Pengmas   : [Nama]
+  Kabid Diklatih  : [Nama]
+  Kabid Senbud-Or : [Nama]
+  Kabid Kominfo   : [Nama]
+  Kabid Wirausaha : [Nama]
+
+Perwakilan Kelurahan:
+  Demangan: [Nama Koordinator]
+  Klitren  : [Nama Koordinator]
+  Kotabaru : [Nama Koordinator]
+  Baciro   : [Nama Koordinator]
+  Terban   : [Nama Koordinator]
+
+
+### ─── 4.9 KONTAK (kontak.html) ───
+
+Pengunjung dapat mengirim:
+  * Nama lengkap *
+  * Email *
+  * Nomor telepon (opsional)
+  * Subjek *
+  * Pesan *
+
+Info Kontak:
+  Alamat   : Kantor Kemantren Gondokusuman
+             Jl. [nama jalan lengkap], Gondokusuman, Yogyakarta 55221
+  Telepon  : +62 [xxx-xxxx-xxxx]
+  Email    : fkkt.gondokusuman@gmail.com
+  Jam Kerja: Senin–Jumat, 08.00–16.00 WIB
+
+Peta: Google Maps embed → Kemantren Gondokusuman, Yogyakarta
+
+Administrator dapat melihat dan mengelola seluruh pesan masuk.
+
+---
+
+## 5. MODUL ADMIN (admin/)
+
+### Dashboard (admin/index.html)
+Menampilkan:
+  * Jumlah berita
+  * Jumlah agenda
+  * Jumlah program kerja
+  * Jumlah galeri
+  * Jumlah prestasi
+  * Jumlah pesan masuk
+  * Aktivitas terbaru
+
+### Login (admin/login.html)
+  * Field: Username + Password
+  * Proteksi: JS localStorage (v1.0) → upgrade ke backend auth (v2.0)
+
+### Halaman Kelola Konten
+  admin/berita.html     → CRUD berita
+  admin/agenda.html     → CRUD agenda
+  admin/program.html    → CRUD program kerja
+  admin/galeri.html     → CRUD galeri foto & video
+  admin/prestasi.html   → CRUD prestasi
+  admin/struktur.html   → Edit susunan pengurus
+  admin/kontak.html     → Lihat & kelola pesan masuk
+  admin/profil.html     → Edit profil organisasi
+
+---
+
+## 6. METADATA SEO PER HALAMAN
+
+index.html:
+  title      : "FKKT Karang Taruna Kemantren Gondokusuman | Beranda"
+  description: "Forum Komunikasi Karang Taruna Kemantren Gondokusuman
+                — wadah koordinasi pemuda 5 kelurahan di Yogyakarta.
+                Bersatu, Bergerak, Berdampak."
+  og:image   : assets/images/hero/hero-beranda.jpg
+
+profil.html:
+  title      : "Profil Organisasi | FKKT Gondokusuman"
+  description: "Mengenal FKKT Karang Taruna Kemantren Gondokusuman:
+                sejarah, visi misi, dan nilai-nilai organisasi pemuda
+                Gondokusuman, Yogyakarta."
+
+program.html:
+  title      : "Program & Kegiatan | FKKT Gondokusuman"
+  description: "Berbagai program dan kegiatan FKKT Karang Taruna
+                Gondokusuman: sosial, pendidikan, seni budaya,
+                olahraga, dan lingkungan."
+
+berita.html:
+  title      : "Berita & Artikel | FKKT Gondokusuman"
+  description: "Berita terkini dan artikel seputar kegiatan FKKT
+                Karang Taruna Kemantren Gondokusuman, Yogyakarta."
+
+agenda.html:
+  title      : "Agenda Kegiatan | FKKT Gondokusuman"
+  description: "Jadwal dan agenda kegiatan FKKT Karang Taruna
+                Kemantren Gondokusuman, Yogyakarta."
+
+galeri.html:
+  title      : "Galeri Kegiatan | FKKT Gondokusuman"
+  description: "Galeri foto dan video dokumentasi kegiatan FKKT
+                Karang Taruna Kemantren Gondokusuman."
+
+struktur.html:
+  title      : "Struktur Organisasi | FKKT Gondokusuman"
+  description: "Susunan pengurus FKKT Karang Taruna Kemantren
+                Gondokusuman periode [tahun]-[tahun]."
+
+kontak.html:
+  title      : "Kontak | FKKT Gondokusuman"
+  description: "Hubungi FKKT Karang Taruna Kemantren Gondokusuman.
+                Alamat, telepon, email, dan form pesan online."
+
+---
+
+## 7. ASET YANG DIBUTUHKAN
+
+LOGO:
+  [ ] Logo FKKT Gondokusuman (PNG transparent, min 512x512)
+  [ ] Logo Karang Taruna (PNG transparent)
+  [ ] Favicon (ICO/PNG 32x32 & 192x192)
+
+FOTO:
+  [ ] Foto hero beranda (landscape, min 1920x1080)
+  [ ] Foto kegiatan (min 6 untuk galeri preview)
+  [ ] Foto pengurus (portrait, min 300x400 per orang)
+  [ ] Foto program masing-masing
+
+VIDEO:
+  [ ] Video profil organisasi (YouTube link atau file MP4)
+  [ ] Video dokumentasi kegiatan (YouTube link)
+
+STATUS:
+  → Foto asli      : menunggu dari pengelola
+  → Placeholder    : menggunakan gambar yang di-generate AI
+  → Logo           : menggunakan placeholder SVG sementara
+  → Video          : embed YouTube sementara menggunakan URL placeholder
+
+---
+
+## 8. ATURAN SISTEM
+
+* Seluruh konten publik hanya dapat diubah oleh administrator.
+* Pengunjung tidak memerlukan akun untuk mengakses informasi publik.
+* Seluruh konten yang dipublikasikan langsung dapat diakses masyarakat.
+* Gambar menggunakan format JPG, PNG, atau WebP.
+* Video dapat berupa unggahan atau tautan YouTube.
+* Versi v1.0: data disimpan sebagai file JSON statis di assets/data/
+* Versi v2.0: data dapat dimigrasikan ke backend/database
+
+---
+
+## 9. KEBUTUHAN NON-FUNGSIONAL
+
+* Responsif pada desktop, tablet, dan ponsel.
+* Navigasi sederhana dan mudah dipahami.
+* Waktu muat halaman cepat (target Lighthouse ≥ 90).
+* Optimasi SEO dasar (meta, og, semantic HTML).
+* Pencadangan file JSON berkala (admin download/export).
+* Kompatibel dengan browser modern (Chrome, Firefox, Edge, Safari).
+* Antarmuka yang ramah pengguna (UX premium).
+
+---
+
+## 10. ALUR PENGGUNAAN
+
+Pengunjung:
+  Beranda → Profil → Berita → Agenda → Program Kerja →
+  Galeri → Prestasi → Struktur → Kontak
+
+Administrator:
+  Login → Dashboard → Kelola Konten → Publikasikan → Logout
+
+---
+
+## 11. CHECKLIST IMPLEMENTASI
+
+FASE 1 — FONDASI:
+  [ ] Buat struktur folder lengkap
+  [ ] assets/css/main.css (design tokens + reset + utilities)
+  [ ] assets/css/components.css (navbar, footer, buttons, cards)
+  [ ] assets/css/pages.css (page-specific styles)
+  [ ] assets/js/main.js (navbar scroll, hamburger, shared)
+  [ ] assets/js/animations.js (IntersectionObserver)
+  [ ] assets/data/*.json (data placeholder berita, program, dll)
+
+FASE 2 — HALAMAN PUBLIK UTAMA:
+  [ ] index.html (Beranda)
+  [ ] profil.html
+  [ ] struktur.html
+  [ ] kontak.html
+
+FASE 3 — HALAMAN KONTEN PUBLIK:
+  [ ] program.html (dengan filter JS)
+  [ ] agenda.html (timeline kegiatan)
+  [ ] berita.html (dengan pagination JS)
+  [ ] berita-detail.html
+  [ ] galeri.html (dengan lightbox JS)
+  [ ] assets/js/gallery.js (lightbox + filter)
+
+FASE 4 — ADMIN PANEL:
+  [ ] admin/login.html
+  [ ] admin/index.html (dashboard)
+  [ ] admin/berita.html
+  [ ] admin/agenda.html
+  [ ] admin/program.html
+  [ ] admin/galeri.html
+  [ ] admin/prestasi.html
+  [ ] admin/struktur.html
+  [ ] admin/kontak.html
+  [ ] admin/profil.html
+  [ ] assets/js/admin.js
+
+FASE 5 — FINALISASI:
+  [ ] sitemap.xml
+  [ ] robots.txt
+  [ ] 404.html
+  [ ] Test responsivitas semua halaman
+  [ ] Test performa (Lighthouse)
+  [ ] Deploy ke hosting
+
+---
+
+## 12. KORESPONDENSI system-design ↔ system-document
+
+[system-design § 2.1 Color Palette]
+  → Diterapkan di: main.css :root, semua elemen UI
+  → Warna primer hijau mencerminkan identitas Karang Taruna
+
+[system-design § 3.1 Navbar]
+  → Konten: Logo + FKKT Gondokusuman + menu 8 halaman + CTA "Hubungi Kami"
+  → Menu publik: Beranda | Profil | Berita | Agenda | Program | Galeri | Struktur | Kontak
+
+[system-design § 3.2 Hero Section]
+  → Konten: lihat § 4.1 BERANDA di atas
+
+[system-design § 4 Halaman & Fitur]
+  → Setiap halaman dalam system-design memiliki konten lengkap di § 4 dokumen ini
+
+[system-design § 5 Admin Panel]
+  → Spesifikasi modul admin ada di § 5 dokumen ini
+
+[system-design § 5 SEO]
+  → Meta data lengkap ada di § 6 dokumen ini
+
+[system-design § 3.7 Form Kontak]
+  → Spesifikasi field ada di § 4.9 dokumen ini
